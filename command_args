@@ -1,0 +1,26 @@
+xfreerdp 
+-host -h -v Host-IPAddress
+-user -u username
+-cert -c ignore cert warnings/errors
+-floatbar -fb "floatbar:sticky:on"
+-domain -d domain name
+-password -pw -p user password*
+-disp Disp res settings
+-dynamic-resolution -dynres -dr dynamic-resolution
+-clipboard -clip -cl +clipboard
+
+-- Example bash script
+#!/bin/bash
+xfreerdp \
+  /v:workpc \
+  /u:bradley \
+  /cert:ignore \
+  /floatbar:sticky:on \
+  /d:internal \
+  /p: \
+  /disp \
+  /dynamic-resolution \
+  +clipboard
+
+-- Example desktop file
+

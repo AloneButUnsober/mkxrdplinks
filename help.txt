@@ -1,0 +1,51 @@
+mkxrdplinks 
+
+
+Create xrdp desktop links [OPTIONS]
+
+
+OPTIONS:
+  -h,     --help              Print this help message and exit 
+  -v,     --host, --ip TEXT   Host-IP Address 
+  -d,     --domain TEXT       User login domain 
+  -u,     --username, --user TEXT 
+                              User login name 
+  -p,     --password TEXT     User login password 
+  -n,     --name TEXT         Desktop shortcut label 
+  -t,     --comment, --tooltip TEXT 
+                              Desktop shortcut tooltip 
+  -c,     --cert              Report certificate errors 
+  -s,     --disp              Disable client display settings 
+  -f,     --floatbar          Disable floating control bar 
+  -r,     --dynamic-resolution 
+                              Disable dynamic resolution 
+  -l,     --clipboard         Disable clipboard in client 
+  -m,     --multimonitor      Enable multi-monitor support 
+  -i,     --icon TEXT         Desktop icon file path 
+
+
+  Creates a bash shell script in ~/bin named using the value from -n.
+  Creates a .desktop file in ~/Desktop named using the value from -n and referencing the created bash shell script.
+
+  By default mkxrdplinks creates xfreerdp links that enable display settings, dynamic resolution, clipboard, floating toolbar and enables the standard "computer" system icon.
+  To disable any of the default behaviors include the corresponding flag on the command line.
+
+  Quote -n -t values with spaces.
+
+  Xrdp does not support switching between multi-monitor and single monitor mode. Create two separate links, one for single-monitor and one for multi-monitor.
+
+  Once the script has been ran check the desktop for newly added icons. 
+  Gome desktop will disable links by default showing a red "x" icon. Right-click the icon then click "Allow Launching".
+
+  Example command lines:
+
+  Create single monitor connection:
+  ./mkxrdplinks -v [Hostname/IP Address] -d [Domain] -u [UserName] -p [Password] -n [DesktopIconName] -t [DesktopIconTooltip]
+  
+  Create multi-monitor connection where the local dns host name is "workpc":
+  ./mkxrdplinks -v workpc -d internal -u bradley -p XXXX9999 -n WorkPC-MM -t "Work PC RDP" -m
+  
+
+  Toubleshooting:
+  
+  Most common issues are incorrect password, incorrect login domain, incorrect username or format.
