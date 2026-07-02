@@ -12,12 +12,12 @@ xfreerdp
 -- Example bash script
 #!/bin/bash
 xfreerdp \
-  /v:workpc \
-  /u:bradley \
+  /v:hostIP \
+  /u:username \
   /cert:ignore \
   /floatbar:sticky:on \
-  /d:internal \
-  /p: \
+  /d:domain \
+  /p:password \
   /disp \
   /dynamic-resolution \
   +clipboard
