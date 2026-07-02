@@ -54,6 +54,7 @@ int main(int argc, char* argv[]){
 		bool disp{false};
 		bool clipboard{false};
 		bool multimon{false};
+		bool sound{false};
 
 		app.add_option("-v,--host,--ip", host, "Host-IP Address");
 		app.add_option("-d,--domain", domain, "User login domain");
@@ -66,6 +67,7 @@ int main(int argc, char* argv[]){
 		app.add_flag("-f,--floatbar", floatbar, "Disable floating control bar");
 		app.add_flag("-r,--dynamic-resolution", dynres, "Disable dynamic resolution");
 		app.add_flag("-l,--clipboard", disp, "Disable clipboard in client");
+		app.add_flag("-o,--sound", multimon, "Disable audio streaming support");
 		app.add_flag("-m,--multimonitor", multimon, "Enable multi-monitor support");
 		app.add_option("-i, --icon", iconpath, "Desktop icon file path");
 
@@ -102,6 +104,9 @@ int main(int argc, char* argv[]){
 		}
 		if (multimon){
 			binFile <<"/multimon \\\n";
+		}
+		if (!sound){
+			binFile << "/sound \\\n";
 		}
 		if (!clipboard){
 			binFile << "+clipboard";
